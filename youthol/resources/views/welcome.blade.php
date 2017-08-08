@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container">
-    <div class="row">
+    <!-- <div class="row">
         <div class="col-md-10 col-md-offset-1">
             <div class="panel panel-default">
                 <div class="panel-heading">欢迎访问</div>
@@ -12,6 +12,11 @@
                 </div>
             </div>
         </div>
+    </div> -->
+    <div class="jumbotron">
+        <h1>欢迎你，同学！</h1>
+        <p>介绍文字占位</p>
+        <p><a class="btn btn-primary btn-lg" href="#" role="button">加入我们</a></p>
     </div>
 </div>
 @endsection

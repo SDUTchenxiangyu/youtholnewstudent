@@ -40,7 +40,7 @@
 
                 <!-- Branding Image -->
                 <a class="navbar-brand" href="{{ url('http://www.youthol.cn') }}">
-                    youthol
+                    Youthol
                 </a>
             </div>
 
