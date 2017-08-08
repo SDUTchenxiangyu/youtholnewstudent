@@ -18,3 +18,4 @@ Route::get('/login', function(){
     return view('login.index');
 });
 Route::post('/login','LoginController@login');
+Route::get('/register','LoginController@register');
