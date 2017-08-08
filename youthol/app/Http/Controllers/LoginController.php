@@ -26,4 +26,8 @@ class LoginController extends Controller
             return back()->with('msg','用户名或密码错误');
         }
     }
+    public function register(Request $request)
+    {
+        $input = $request->input();
+    }
 }
