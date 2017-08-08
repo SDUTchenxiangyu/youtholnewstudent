@@ -11,7 +11,7 @@
     <div class="form-group">
         <label for="inputEmail3" class="col-sm-3 control-label">你的真实姓名</label>
         <div class="col-sm-5">
-            <input type="email" class="form-control" name="name" id="inputEmail3" placeholder="Email">
+            <input type="name" class="form-control" name="name" id="input" placeholder="name">
         </div>
     </div>
     <div class="form-group">
@@ -23,7 +23,7 @@
     <div class="form-group">
         <label for="inputEmail3" class="col-sm-3 control-label">你的手机</label>
         <div class="col-sm-5">
-            <input type="email" class="form-control" name="mphone" id="inputEmail3" placeholder="Email">
+            <input type="text" class="form-control" name="mphone" id="input" placeholder="phone">
         </div>
     </div>
     <div class="form-group">

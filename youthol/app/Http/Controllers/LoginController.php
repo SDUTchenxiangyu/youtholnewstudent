@@ -29,7 +29,14 @@ class LoginController extends Controller
     }
     public function register(Request $request)
     {
-        $input = $request->input();
-
+        $input = $request->except('_token');
+        if($input['password'] == $input['password_r'])
+        {
+            echo "验证通过！";
+        }
+        else
+        {
+            echo "两次密码不一致！";
+        }
     }
 }
