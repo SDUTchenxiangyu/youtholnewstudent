@@ -18,6 +18,7 @@ class Yuser extends Migration
             $table->string('email')->unique();
             $table->string('password');
             $table->biginteger('mphone');
+            $table->string('class');
             $table->integer('pid');
             $table->rememberToken();
             $table->timestamps();

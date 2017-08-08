@@ -17,9 +17,10 @@ class LoginController extends Controller
             return back()->with('msg','没有此用户，请检查您的邮箱账号是否正确');
         }
         $password = $user['password'];
+        $name = $user['name'];
         if($password == $input['password'])
         {
-            return view('welcome');
+            return view('welcome',['name'=>$name]);
         }
         else
         {
@@ -29,5 +30,6 @@ class LoginController extends Controller
     public function register(Request $request)
     {
         $input = $request->input();
+
     }
 }

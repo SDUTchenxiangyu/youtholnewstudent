@@ -3,7 +3,7 @@
 @if(session('msg'))
 <div class="alert alert-danger alert-dismissible" role="alert">
   <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-  <strong>{{ session('msg') }}</strong>
+  <strong>{{ session('errors') }}</strong>
 </div>
 @endif
 <form class="form-horizontal" method="post" action="{{ url('/register') }}">
@@ -11,7 +11,7 @@
     <div class="form-group">
         <label for="inputEmail3" class="col-sm-3 control-label">你的真实姓名</label>
         <div class="col-sm-5">
-            <input type="email" class="form-control" name="email" id="inputEmail3" placeholder="Email">
+            <input type="email" class="form-control" name="name" id="inputEmail3" placeholder="Email">
         </div>
     </div>
     <div class="form-group">
@@ -23,7 +23,7 @@
     <div class="form-group">
         <label for="inputEmail3" class="col-sm-3 control-label">你的手机</label>
         <div class="col-sm-5">
-            <input type="email" class="form-control" name="email" id="inputEmail3" placeholder="Email">
+            <input type="email" class="form-control" name="mphone" id="inputEmail3" placeholder="Email">
         </div>
     </div>
     <div class="form-group">
@@ -35,7 +35,7 @@
     <div class="form-group">
         <label for="inputPassword3" class="col-sm-3 control-label">确认密码</label>
         <div class="col-sm-5">
-            <input type="password" name="password" class="form-control" id="inputPassword3" placeholder="Password">
+            <input type="password" name="password_r" class="form-control" id="inputPassword3" placeholder="Password">
         </div>
     </div>
   <!-- <div class="form-group">
