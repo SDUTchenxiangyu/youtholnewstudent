@@ -10,7 +10,8 @@ class LoginController extends Controller
 {
     public function login(Request $request)
     {
-        $input = $request->input();
+        $input = $request->all();
+        dd($input);
         $user = Yuser::where('email',$input['email'])->get()->first();
         if($user==null)
         {

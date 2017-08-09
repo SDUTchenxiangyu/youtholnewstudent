@@ -44,6 +44,8 @@
 <!-- <label for="inputEmail3" class="col-sm-3 control-label">邮箱</label> -->
 <!-- <input type="date" class="weui_input"> -->
 <!-- </form> -->
+<form method="post" id="form" action="{{url('/login')}}">
+{{ csrf_field() }}
 <div class="page input js_show">
     <div class="page__bd">  
         <div class="weui-cells__title">报名表</div> 
@@ -51,7 +53,7 @@
             <div class="weui-cell">
                 <div class="weui-cell__hd"><label class="weui-label">姓名</label></div>
                 <div class="weui-cell__bd">
-                    <input class="weui-input" pattern="[0-9]*" placeholder="请输入您的姓名" type="text">
+                    <input class="weui-input" name="name" placeholder="请输入您的姓名" type="text">
                 </div>
             </div>
             <div class="weui-cell weui-cell_vcode">
@@ -59,19 +61,19 @@
                     <label class="weui-label">手机号</label>
                 </div>
                 <div class="weui-cell__bd">
-                    <input class="weui-input" placeholder="请输入手机号" type="tel">
+                    <input class="weui-input" name="mphone" placeholder="请输入手机号" type="tel">
                 </div>
             </div>
             <div class="weui-cell">
                 <div class="weui-cell__hd"><label class="weui-label">班级</label></div>
                 <div class="weui-cell__bd">
-                    <input class="weui-input" pattern="[0-9]*" placeholder="请输入您的班级" type="text">
+                    <input class="weui-input" name="class" placeholder="请输入您的班级" type="text">
                 </div>
             </div>
             <div class="weui-cell">
                 <div class="weui-cell__hd"><label class="weui-label">学号</label></div>
                 <div class="weui-cell__bd">
-                    <input class="weui-input" pattern="[0-9]*" placeholder="请输入您的学号" type="text">
+                    <input class="weui-input" name="number" pattern="[0-9]*" placeholder="请输入您的学号" type="text">
                 </div>
             </div>
             <div class="weui-cells__title">性别</div>
@@ -96,7 +98,73 @@
                     </div>
                 </label>
             </div>
-            <div class="weui-cell">
+            <!-- <div class="weui-cells__title">第一志愿部门</div>
+            <div class="weui-cells weui-cells_radio">
+                <label class="weui-cell weui-check__label" for="x21">
+                    <div class="weui-cell__bd">
+                        <p>综合</p>
+                    </div>
+                    <div class="weui-cell__ft">
+                        <input class="weui-check" name="radio1" id="x21" type="radio">
+                        <span class="weui-icon-checked"></span>
+                    </div>
+                </label>
+                <label class="weui-cell weui-check__label" for="x22">
+                    <div class="weui-cell__bd">
+                        <p>品牌</p>
+                    </div>
+                    <div class="weui-cell__ft">
+                        <input class="weui-check" name="radio1" id="x22" type="radio">
+                        <span class="weui-icon-checked"></span>
+                    </div>
+                </label>
+                <label class="weui-cell weui-check__label" for="x13">
+                    <div class="weui-cell__bd">
+                        <p>采编</p>
+                    </div>
+                    <div class="weui-cell__ft">
+                        <input class="weui-check" name="radio1" id="x13" type="radio">
+                        <span class="weui-icon-checked"></span>
+                    </div>
+                </label>
+                <label class="weui-cell weui-check__label" for="x14">
+                    <div class="weui-cell__bd">
+                        <p>新媒体</p>
+                    </div>
+                    <div class="weui-cell__ft">
+                        <input class="weui-check" name="radio1" id="x14" type="radio">
+                        <span class="weui-icon-checked"></span>
+                    </div>
+                </label>
+                <label class="weui-cell weui-check__label" for="x15">
+                    <div class="weui-cell__bd">
+                        <p>美工</p>
+                    </div>
+                    <div class="weui-cell__ft">
+                        <input class="weui-check" name="radio1" id="x15" type="radio">
+                        <span class="weui-icon-checked"></span>
+                    </div>
+                </label>
+                <label class="weui-cell weui-check__label" for="x16">
+                    <div class="weui-cell__bd">
+                        <p>闪客</p>
+                    </div>
+                    <div class="weui-cell__ft">
+                        <input class="weui-check" name="radio1" id="x16" type="radio">
+                        <span class="weui-icon-checked"></span>
+                    </div>
+                </label>
+                <label class="weui-cell weui-check__label" for="x17">
+                    <div class="weui-cell__bd">
+                        <p>程序</p>
+                    </div>
+                    <div class="weui-cell__ft">
+                        <input class="weui-check" name="radio1" id="x17" type="radio">
+                        <span class="weui-icon-checked"></span>
+                    </div>
+                </label>
+            </div> -->
+            <!-- <div class="weui-cell">
                 <div class="weui-cell__hd"><label for="" class="weui-label">日期</label></div>
                 <div class="weui-cell__bd">
                     <input class="weui-input" value="" type="date">
@@ -151,28 +219,94 @@
                     </label>
                 </div>
             </div>
-        </div>
-
-        <div class="weui-cells__title">文本框</div>
-        <div class="weui-cells">
-            <div class="weui-cell">
-                <div class="weui-cell__bd">
-                    <input class="weui-input" placeholder="请输入文本" type="text">
+        </div> -->
+        <div class="weui-cells__title">报名部门（每人只能报两个部门）</div>
+        <div class="weui-cells weui-cells_checkbox">
+            <label class="weui-cell weui-check__label" for="s11">
+                <div class="weui-cell__hd">
+                    <input type="checkbox" class="weui-check" name="zonghe" vaule="12" id="s11" checked="checked">
+                    <i class="weui-icon-checked"></i>
                 </div>
-            </div>
+                <div class="weui-cell__bd">
+                    <p>综合</p>
+                </div>
+            </label>
+            <label class="weui-cell weui-check__label" for="s12">
+                <div class="weui-cell__hd">
+                    <input type="checkbox" name="checkbox1" class="weui-check" id="s12">
+                    <i class="weui-icon-checked"></i>
+                </div>
+                <div class="weui-cell__bd">
+                    <p>品牌</p>
+                </div>
+            </label>
+            <label class="weui-cell weui-check__label" for="s13">
+                <div class="weui-cell__hd">
+                    <input type="checkbox" name="checkbox1" class="weui-check" id="s13">
+                    <i class="weui-icon-checked"></i>
+                </div>
+                <div class="weui-cell__bd">
+                    <p>采编</p>
+                </div>
+            </label>
+            <label class="weui-cell weui-check__label" for="s14">
+                <div class="weui-cell__hd">
+                    <input type="checkbox" name="checkbox1" class="weui-check" id="s14">
+                    <i class="weui-icon-checked"></i>
+                </div>
+                <div class="weui-cell__bd">
+                    <p>新媒体</p>
+                </div>
+            </label>
+            <label class="weui-cell weui-check__label" for="s15">
+                <div class="weui-cell__hd">
+                    <input type="checkbox" name="checkbox1" class="weui-check" id="s15">
+                    <i class="weui-icon-checked"></i>
+                </div>
+                <div class="weui-cell__bd">
+                    <p>美工</p>
+                </div>
+            </label>
+            <label class="weui-cell weui-check__label" for="s16">
+                <div class="weui-cell__hd">
+                    <input type="checkbox" name="checkbox1" class="weui-check" id="s16">
+                    <i class="weui-icon-checked"></i>
+                </div>
+                <div class="weui-cell__bd">
+                    <p>闪客</p>
+                </div>
+            </label>
+            <label class="weui-cell weui-check__label" for="s17">
+                <div class="weui-cell__hd">
+                    <input type="checkbox" name="chengxu" class="weui-check" id="s17">
+                    <i class="weui-icon-checked"></i>
+                </div>
+                <div class="weui-cell__bd">
+                    <p>程序</p>
+                </div>
+            </label>
         </div>
-
-        <div class="weui-cells__title">文本域</div>
+        <div class="weui-cells__title">个人简历</div>
         <div class="weui-cells weui-cells_form">
             <div class="weui-cell">
                 <div class="weui-cell__bd">
-                    <textarea class="weui-textarea" placeholder="请输入文本" rows="3"></textarea>
-                    <div class="weui-textarea-counter"><span>0</span>/200</div>
+                    <textarea class="weui-textarea" name="jianjie" placeholder="请输入文本" rows="3"></textarea>
+                    <!-- <div class="weui-textarea-counter"><span>0</span>/200</div> -->
                 </div>
             </div>
         </div>
 
-        <div class="weui-cells__title">选择</div>
+        <div class="weui-cells__title">特长</div>
+        <div class="weui-cells weui-cells_form">
+            <div class="weui-cell">
+                <div class="weui-cell__bd">
+                    <textarea class="weui-textarea" name="jianjie" placeholder="请输入文本" rows="3"></textarea>
+                    <!-- <div class="weui-textarea-counter"><span>0</span>/200</div> -->
+                </div>
+            </div>
+        </div>
+
+        <!-- <div class="weui-cells__title">选择</div>
         <div class="weui-cells">
 
             <div class="weui-cell weui-cell_select weui-cell_select-before">
@@ -219,11 +353,12 @@
             <span class="weui-agree__text">
                 阅读并同意<a href="javascript:void(0);">《相关条款》</a>
             </span>
-        </label>
+        </label> -->
 
         <div class="weui-btn-area">
-            <a class="weui-btn weui-btn_primary" href="javascript:" id="showTooltips">确定</a>
+            <button class="weui-btn weui-btn_primary" type="submit">确定</button>
         </div>
     </div>
 </div>
+</form>
 @endsection
