@@ -30,13 +30,27 @@ class LoginController extends Controller
     public function register(Request $request)
     {
         $input = $request->except('_token');
+        $up = new Yuser();
         if($input['password'] == $input['password_r'])
         {
-            echo "验证通过！";
+            $up->name=$input['name'];
+            $up->password = $input['password'];
+            $up->pid = 1;
+            $up->class = $input['class'];
+            $up->mphone = $input['mphone'];
+            $up->email = $input['email'];
+            if($up->save())
+            {
+                return view('welcome',['name'=>$input['name']]);
+            }
+            else
+            {
+                return back()->with('msg','数据填充失败！');
+            }
         }
         else
         {
-            echo "两次密码不一致！";
+            return back()->with('msg','两次密码不一致！');
         }
     }
 }

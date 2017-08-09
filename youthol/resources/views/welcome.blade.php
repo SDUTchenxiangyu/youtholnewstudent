@@ -14,7 +14,7 @@
         </div>
     </div> -->
     <div class="jumbotron">
-        <h1>欢迎你，{{ $name }}同学！</h1>
+        <h1>欢迎你，{{isset($name) ? $name : ''}}同学！</h1>
         <p>介绍文字占位</p>
         <p><a class="btn btn-primary btn-lg" href="#" role="button">加入我们</a></p>
     </div>

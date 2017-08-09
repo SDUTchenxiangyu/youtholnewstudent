@@ -21,6 +21,12 @@
         </div>
     </div>
     <div class="form-group">
+        <label for="inputEmail3" class="col-sm-3 control-label">班级</label>
+        <div class="col-sm-5">
+            <input type="name" class="form-control" name="class" id="input" placeholder="name">
+        </div>
+    </div>
+    <div class="form-group">
         <label for="inputEmail3" class="col-sm-3 control-label">你的手机</label>
         <div class="col-sm-5">
             <input type="text" class="form-control" name="mphone" id="input" placeholder="phone">
