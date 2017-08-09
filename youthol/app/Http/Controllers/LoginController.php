@@ -10,8 +10,7 @@ class LoginController extends Controller
 {
     public function login(Request $request)
     {
-        $input = $request->all();
-        dd($input);
+        $input = $request->except('_token');
         $user = Yuser::where('email',$input['email'])->get()->first();
         if($user==null)
         {
@@ -34,6 +33,17 @@ class LoginController extends Controller
         $up = new Yuser();
         if($input['password'] == $input['password_r'])
         {
+            $rules = [
+                'password'=>'required',
+                'name'=>'required',
+                'number'=>'required',
+                'mphone'=>'required',
+                
+            ];
+            $message = [
+                'password.required'=>'新密码不能为空',                                               
+            ];
+            $validator = Validator::make($input,$rules,$message);
             $up->name=$input['name'];
             $up->password = $input['password'];
             $up->pid = 1;

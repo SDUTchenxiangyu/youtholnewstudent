@@ -44,36 +44,48 @@
 <!-- <label for="inputEmail3" class="col-sm-3 control-label">邮箱</label> -->
 <!-- <input type="date" class="weui_input"> -->
 <!-- </form> -->
-<form method="post" id="form" action="{{url('/login')}}">
+<form method="post" id="form" action="{{url('/register')}}" name="frm" onsubmit="return submit1(this);">
 {{ csrf_field() }}
 <div class="page input js_show">
     <div class="page__bd">  
         <div class="weui-cells__title">报名表</div> 
         <div class="weui-cells weui-cells_form">
             <div class="weui-cell">
-                <div class="weui-cell__hd"><label class="weui-label">姓名</label></div>
+                <div class="weui-cell__hd"><label class="weui-label"><i class="require">*</i>姓名</label></div>
                 <div class="weui-cell__bd">
                     <input class="weui-input" name="name" placeholder="请输入您的姓名" type="text">
                 </div>
             </div>
             <div class="weui-cell weui-cell_vcode">
                 <div class="weui-cell__hd">
-                    <label class="weui-label">手机号</label>
+                    <label class="weui-label"><i class="require">*</i>手机号</label>
                 </div>
                 <div class="weui-cell__bd">
                     <input class="weui-input" name="mphone" placeholder="请输入手机号" type="tel">
                 </div>
             </div>
             <div class="weui-cell">
-                <div class="weui-cell__hd"><label class="weui-label">班级</label></div>
+                <div class="weui-cell__hd"><label class="weui-label"><i class="require">*</i>班级</label></div>
                 <div class="weui-cell__bd">
                     <input class="weui-input" name="class" placeholder="请输入您的班级" type="text">
                 </div>
             </div>
             <div class="weui-cell">
-                <div class="weui-cell__hd"><label class="weui-label">学号</label></div>
+                <div class="weui-cell__hd"><label class="weui-label"><i class="require">*</i>学号</label></div>
                 <div class="weui-cell__bd">
                     <input class="weui-input" name="number" pattern="[0-9]*" placeholder="请输入您的学号" type="text">
+                </div>
+            </div>
+            <div class="weui-cell">
+                <div class="weui-cell__hd"><label class="weui-label"><i class="require">*</i>登录密码</label></div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input" name="password" placeholder="请输入您的密码" type="password">
+                </div>
+            </div>
+            <div class="weui-cell">
+                <div class="weui-cell__hd"><label class="weui-label"><i class="require">*</i>确认密码</label></div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input" name="password_r" placeholder="请输入您的密码" type="password">
                 </div>
             </div>
             <div class="weui-cells__title">性别</div>
@@ -83,7 +95,7 @@
                         <p><i class="require">*</i>男</p>
                     </div>
                     <div class="weui-cell__ft">
-                        <input class="weui-check" name="radio1" id="x11" type="radio">
+                        <input class="weui-check" name="sex" id="x11" value="男" type="radio">
                         <span class="weui-icon-checked"></span>
                     </div>
                 </label>
@@ -93,7 +105,7 @@
                         <p><i class="require">*</i>女</p>
                     </div>
                     <div class="weui-cell__ft">
-                         <input name="radio1" class="weui-check" id="x12" checked="checked" type="radio"> 
+                         <input name="sex" class="weui-check" id="x12" value="女" type="radio"> 
                          <span class="weui-icon-checked"></span> 
                     </div>
                 </label>
@@ -220,11 +232,11 @@
                 </div>
             </div>
         </div> -->
-        <div class="weui-cells__title">报名部门（每人只能报两个部门）</div>
+        <div class="weui-cells__title"><p><i class="require">*</i>报名部门（每人只能报两个部门）</p></div>
         <div class="weui-cells weui-cells_checkbox">
             <label class="weui-cell weui-check__label" for="s11">
                 <div class="weui-cell__hd">
-                    <input type="checkbox" class="weui-check" name="zonghe" vaule="12" id="s11" checked="checked">
+                    <input type="checkbox" class="weui-check" name="checkbox1[]" value="综合" id="s11">
                     <i class="weui-icon-checked"></i>
                 </div>
                 <div class="weui-cell__bd">
@@ -233,7 +245,7 @@
             </label>
             <label class="weui-cell weui-check__label" for="s12">
                 <div class="weui-cell__hd">
-                    <input type="checkbox" name="checkbox1" class="weui-check" id="s12">
+                    <input type="checkbox" name="checkbox1[]" value="品牌" class="weui-check" id="s12">
                     <i class="weui-icon-checked"></i>
                 </div>
                 <div class="weui-cell__bd">
@@ -242,7 +254,7 @@
             </label>
             <label class="weui-cell weui-check__label" for="s13">
                 <div class="weui-cell__hd">
-                    <input type="checkbox" name="checkbox1" class="weui-check" id="s13">
+                    <input type="checkbox" name="checkbox1[]" value="采编" class="weui-check" id="s13">
                     <i class="weui-icon-checked"></i>
                 </div>
                 <div class="weui-cell__bd">
@@ -251,7 +263,7 @@
             </label>
             <label class="weui-cell weui-check__label" for="s14">
                 <div class="weui-cell__hd">
-                    <input type="checkbox" name="checkbox1" class="weui-check" id="s14">
+                    <input type="checkbox" name="checkbox1[]" value="新媒体" class="weui-check" id="s14">
                     <i class="weui-icon-checked"></i>
                 </div>
                 <div class="weui-cell__bd">
@@ -260,7 +272,7 @@
             </label>
             <label class="weui-cell weui-check__label" for="s15">
                 <div class="weui-cell__hd">
-                    <input type="checkbox" name="checkbox1" class="weui-check" id="s15">
+                    <input type="checkbox" name="checkbox1[]" value="美工" class="weui-check" id="s15">
                     <i class="weui-icon-checked"></i>
                 </div>
                 <div class="weui-cell__bd">
@@ -269,7 +281,7 @@
             </label>
             <label class="weui-cell weui-check__label" for="s16">
                 <div class="weui-cell__hd">
-                    <input type="checkbox" name="checkbox1" class="weui-check" id="s16">
+                    <input type="checkbox" name="checkbox1[]" value="闪客" class="weui-check" id="s16">
                     <i class="weui-icon-checked"></i>
                 </div>
                 <div class="weui-cell__bd">
@@ -278,7 +290,7 @@
             </label>
             <label class="weui-cell weui-check__label" for="s17">
                 <div class="weui-cell__hd">
-                    <input type="checkbox" name="chengxu" class="weui-check" id="s17">
+                    <input type="checkbox" name="checkbox1[]" value="程序" class="weui-check" id="s17">
                     <i class="weui-icon-checked"></i>
                 </div>
                 <div class="weui-cell__bd">
@@ -300,7 +312,7 @@
         <div class="weui-cells weui-cells_form">
             <div class="weui-cell">
                 <div class="weui-cell__bd">
-                    <textarea class="weui-textarea" name="jianjie" placeholder="请输入文本" rows="3"></textarea>
+                    <textarea class="weui-textarea" name="techang" placeholder="请输入文本" rows="3"></textarea>
                     <!-- <div class="weui-textarea-counter"><span>0</span>/200</div> -->
                 </div>
             </div>
@@ -356,9 +368,32 @@
         </label> -->
 
         <div class="weui-btn-area">
-            <button class="weui-btn weui-btn_primary" type="submit">确定</button>
+            <input class="weui-btn weui-btn_primary" onclick="" type="submit" value="确定">
         </div>
     </div>
 </div>
 </form>
+<br>
+<br>
+<div class="weui-footer">
+    <p class="weui-footer__links">
+        <a href="{{url('http://www.youthol.cn')}}" class="weui-footer__link">网站首页</a>
+    </p>
+    <p class="weui-footer__text">Copyright © 2001-2017 www.youthol.cn</p>
+</div>
+<script>
+    function submit1(frm){
+        if (document.frm.name.value=="") {
+            alert("请输入姓名！");
+            document.frm.name.focus();
+            return false;
+        }
+        else if(document.frm.number.value==""){
+            alert("请输入学号！");
+            document.frm.name.focus();
+            return false;
+        }
+        return true;
+    } 
+</script>
 @endsection
