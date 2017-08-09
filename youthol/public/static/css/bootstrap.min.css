@@ -140,7 +140,7 @@ optgroup,
 select,
 textarea {
     margin: 0;
-    font: inherit;
+    /* font: inherit; */
     color: inherit
 }
 
@@ -1403,7 +1403,7 @@ input,
 select,
 textarea {
     font-family: inherit;
-    font-size: inherit;
+    /* font-size: inherit; */
     line-height: inherit
 }
 
