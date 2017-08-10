@@ -5,12 +5,16 @@
         margin-top:100px;
     }
 </style> -->
+
 @if(session('msg'))
 <div class="alert alert-danger alert-dismissible" role="alert">
   <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
   <strong>{{ session('msg') }}</strong>
 </div>
 @endif
+<script>
+    $(input).select(config);
+</script>
  <!-- <form class="form-horizontal" method="post" action="{{ url('/login') }}">
     {{ csrf_field() }}
     <div class="form-group login_box">
@@ -69,7 +73,7 @@
                     <label class="weui-label"><i class="require">*</i>邮箱</label>
                 </div>
                 <div class="weui-cell__bd">
-                    <input class="weui-input" name="email" placeholder="请输入手机号" type="tel">
+                    <input class="weui-input" name="email" placeholder="请输入邮箱地址" type="tel">
                 </div>
             </div>
             <div class="weui-cell">
@@ -84,7 +88,7 @@
                     <input class="weui-input" name="number" pattern="[0-9]*" placeholder="请输入您的学号" type="text">
                 </div>
             </div>
-            <div class="weui-cell">
+            <!-- <div class="weui-cell">
                 <div class="weui-cell__hd"><label class="weui-label"><i class="require">*</i>登录密码</label></div>
                 <div class="weui-cell__bd">
                     <input class="weui-input" name="password" placeholder="请输入您的密码" type="password">
@@ -95,7 +99,7 @@
                 <div class="weui-cell__bd">
                     <input class="weui-input" name="password_r" placeholder="请输入您的密码" type="password">
                 </div>
-            </div>
+            </div> -->
             <div class="weui-cells__title">性别</div>
             <div class="weui-cells weui-cells_radio">
                 <label class="weui-cell weui-check__label" for="x11">
@@ -240,7 +244,7 @@
                 </div>
             </div>
         </div> -->
-        <div class="weui-cells__title"><p><i class="require">*</i>报名部门（每人只能报两个部门）</p></div>
+        <!-- <div class="weui-cells__title"><p><i class="require">*</i>报名部门（每人只能报两个部门）</p></div>
         <div class="weui-cells weui-cells_checkbox">
             <label class="weui-cell weui-check__label" for="s11">
                 <div class="weui-cell__hd">
@@ -305,7 +309,19 @@
                     <p>程序</p>
                 </div>
             </label>
+        </div> -->
+        <div class="weui-cell">
+        <div class="weui-cell__hd"><label for="name" class="weui-label">第一志愿部门</label></div>
+        <div class="weui-cell__bd">
+          <input class="weui-input" id="job" name="first" readonly="readonly" type="text">
         </div>
+      </div>
+      <div class="weui-cell">
+        <div class="weui-cell__hd"><label for="name" class="weui-label">第二志愿部门</label></div>
+        <div class="weui-cell__bd">
+          <input class="weui-input" id="jobtwo" name="second" readonly="readonly" type="text">
+        </div>
+      </div>
         <div class="weui-cells__title">个人简历</div>
         <div class="weui-cells weui-cells_form">
             <div class="weui-cell">
@@ -325,7 +341,7 @@
                 </div>
             </div>
         </div>
-
+        
         <!-- <div class="weui-cells__title">选择</div>
         <div class="weui-cells">
 
@@ -399,6 +415,11 @@
     </div>
 </div> -->
 <script>
+  $(function() {
+    FastClick.attach(document.body);
+  });
+</script>
+<script>
     function submit1(frm){
         if (document.frm.name.value==""){
             // alert("请输入姓名！");
@@ -429,21 +450,43 @@
             });
             return false;
         }
-        else if(document.frm.password.value==""){
-            $(document).on("click","#boot", function() {
-                $.alert("密码不能为空！", "警告！");
-            });
-            return false;
-        }
+        // else if(document.frm.password.value==""){
+        //     $(document).on("click","#boot", function() {
+        //         $.alert("密码不能为空！", "警告！");
+        //     });
+        //     return false;
+        // }
         return true;
     } 
 </script>
 <script>
-    function submit2(frm)
-    {
-        $("#iosDialog2").click(function(){
-            $("div").hide();
-        });
-    }
+    $("#job").select({
+    title: "选择第一志愿部门",
+    items: ["综合", "品牌", "采编", "新媒体", "美工", "闪客", "程序"],
+    onChange: function(d) {
+          console.log(this, d);
+        },
+        onClose: function() {
+          console.log("close");
+        },
+        onOpen: function() {
+          console.log("open");
+        },
+    });
+</script>
+<script>
+    $("#jobtwo").select({
+    title: "选择第二志愿部门",
+    items: ["综合", "品牌", "采编", "新媒体", "美工", "闪客", "程序"],
+    onChange: function(d) {
+          console.log(this, d);
+        },
+        onClose: function() {
+          console.log("close");
+        },
+        onOpen: function() {
+          console.log("open");
+        },
+    });
 </script>
 @endsection

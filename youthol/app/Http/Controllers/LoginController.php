@@ -32,13 +32,11 @@ class LoginController extends Controller
     {
         $input = $request->except('_token');
         $up = new Yuser();
-        if($input['password'] == $input['password_r'])
-        {
             $up->name=$input['name'];
-            $up->password = $input['password'];
+            // $up->password = $input['password'];
             $up->pid = 1;
-            $up->bumen1 = $input['checkbox1'][0];
-            $up->bumen2 = $input['checkbox1'][1];
+            $up->bumen1 = $input['first'];
+            $up->bumen2 = $input['second'];
             $up->class = $input['class'];
             $up->number = $input['number'];
             $up->mphone = $input['mphone'];
@@ -54,10 +52,5 @@ class LoginController extends Controller
             {
                 return back()->with('msg','数据填充失败！');
             }
-        }
-        else
-        {
-            return back()->with('msg','两次密码不一致！');
-        }
     }
 }
