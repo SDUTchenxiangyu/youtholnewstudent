@@ -64,6 +64,14 @@
                     <input class="weui-input" name="mphone" placeholder="请输入手机号" type="tel">
                 </div>
             </div>
+            <div class="weui-cell weui-cell_vcode">
+                <div class="weui-cell__hd">
+                    <label class="weui-label"><i class="require">*</i>邮箱</label>
+                </div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input" name="email" placeholder="请输入手机号" type="tel">
+                </div>
+            </div>
             <div class="weui-cell">
                 <div class="weui-cell__hd"><label class="weui-label"><i class="require">*</i>班级</label></div>
                 <div class="weui-cell__bd">
@@ -368,7 +376,7 @@
         </label> -->
 
         <div class="weui-btn-area">
-            <input class="weui-btn weui-btn_primary" onclick="" type="submit" value="确定">
+            <input class="weui-btn weui-btn_primary" id="boot" type="submit" value="确定">
         </div>
     </div>
 </div>
@@ -381,19 +389,61 @@
     </p>
     <p class="weui-footer__text">Copyright © 2001-2017 www.youthol.cn</p>
 </div>
+<!-- <div class="js_dialog" id="iosDialog2" style="opacity: 0;">
+    <div class="weui-mask"></div>
+    <div class="weui-dialog">
+    <div class="weui-dialog__bd">请输入姓名！</div>
+    <div class="weui-dialog__ft">
+        <a href="javascript:;" class="weui-dialog__btn weui-dialog__btn_primary">知道了</a>
+    </div>
+    </div>
+</div> -->
 <script>
     function submit1(frm){
-        if (document.frm.name.value=="") {
-            alert("请输入姓名！");
-            document.frm.name.focus();
+        if (document.frm.name.value==""){
+            // alert("请输入姓名！");
+            // document.frm.name.focus();
+            // $("#iosDialog2").click(function(){
+            //     $("div").show();
+            // });
+            $(document).on("click","#boot", function() {
+                $.alert("姓名不能为空！", "警告！");
+            });
             return false;
         }
         else if(document.frm.number.value==""){
-            alert("请输入学号！");
-            document.frm.name.focus();
+            $(document).on("click","#boot", function() {
+                $.alert("学号不能为空！", "警告！");
+            });
+            return false;
+        }
+        else if(document.frm.class.value==""){
+            $(document).on("click","#boot", function() {
+                $.alert("班级不能为空！", "警告！");
+            });
+            return false;
+        }
+        else if(document.frm.mphone.value==""){
+            $(document).on("click","#boot", function() {
+                $.alert("手机号不能为空！", "警告！");
+            });
+            return false;
+        }
+        else if(document.frm.password.value==""){
+            $(document).on("click","#boot", function() {
+                $.alert("密码不能为空！", "警告！");
+            });
             return false;
         }
         return true;
     } 
+</script>
+<script>
+    function submit2(frm)
+    {
+        $("#iosDialog2").click(function(){
+            $("div").hide();
+        });
+    }
 </script>
 @endsection

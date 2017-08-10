@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Yuser;
+use Validator;
 use App\Http\Requests;
 
 class LoginController extends Controller
@@ -33,23 +34,18 @@ class LoginController extends Controller
         $up = new Yuser();
         if($input['password'] == $input['password_r'])
         {
-            $rules = [
-                'password'=>'required',
-                'name'=>'required',
-                'number'=>'required',
-                'mphone'=>'required',
-                
-            ];
-            $message = [
-                'password.required'=>'新密码不能为空',                                               
-            ];
-            $validator = Validator::make($input,$rules,$message);
             $up->name=$input['name'];
             $up->password = $input['password'];
             $up->pid = 1;
+            $up->bumen1 = $input['checkbox1'][0];
+            $up->bumen2 = $input['checkbox1'][1];
             $up->class = $input['class'];
+            $up->number = $input['number'];
             $up->mphone = $input['mphone'];
             $up->email = $input['email'];
+            $up->jianjie = $input['jianjie'];
+            $up->techang = $input['techang'];
+            $up->sex = $input['sex'];
             if($up->save())
             {
                 return view('welcome',['name'=>$input['name']]);
