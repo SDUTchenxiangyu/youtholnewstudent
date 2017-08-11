@@ -7,10 +7,7 @@
 </style> -->
 
 @if(session('msg'))
-<div class="alert alert-danger alert-dismissible" role="alert">
-  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
   <strong>{{ session('msg') }}</strong>
-</div>
 @endif
 <script>
     $(input).select(config);
@@ -48,7 +45,7 @@
 <!-- <label for="inputEmail3" class="col-sm-3 control-label">邮箱</label> -->
 <!-- <input type="date" class="weui_input"> -->
 <!-- </form> -->
-<form method="post" id="form" action="{{url('/register')}}" name="frm" onsubmit="return submit1(this);">
+<form method="post" id="form" action="{{url('/register')}}" name="frm">
 {{ csrf_field() }}
 <div class="page input js_show">
     <div class="page__bd">  
@@ -392,7 +389,7 @@
         </label> -->
 
         <div class="weui-btn-area">
-            <input class="weui-btn weui-btn_primary" id="boot" type="submit" value="确定">
+            <input class="weui-btn weui-btn_primary" id="boot" type="button" onclick="submitForm();" value="确定">
         </div>
     </div>
 </div>
@@ -420,44 +417,66 @@
   });
 </script>
 <script>
-    function submit1(frm){
-        if (document.frm.name.value==""){
-            // alert("请输入姓名！");
-            // document.frm.name.focus();
-            // $("#iosDialog2").click(function(){
-            //     $("div").show();
-            // });
-            $(document).on("click","#boot", function() {
-                $.alert("姓名不能为空！", "警告！");
-            });
-            return false;
-        }
-        else if(document.frm.number.value==""){
-            $(document).on("click","#boot", function() {
-                $.alert("学号不能为空！", "警告！");
-            });
-            return false;
-        }
-        else if(document.frm.class.value==""){
-            $(document).on("click","#boot", function() {
-                $.alert("班级不能为空！", "警告！");
-            });
-            return false;
-        }
-        else if(document.frm.mphone.value==""){
-            $(document).on("click","#boot", function() {
-                $.alert("手机号不能为空！", "警告！");
-            });
-            return false;
-        }
-        // else if(document.frm.password.value==""){
-        //     $(document).on("click","#boot", function() {
-        //         $.alert("密码不能为空！", "警告！");
-        //     });
-        //     return false;
-        // }
-        return true;
-    } 
+    // function submit1(frm){
+    //     if (document.frm.name.value==""){
+    //         // alert("请输入姓名！");
+    //         // document.frm.name.focus();
+    //         // $("#iosDialog2").click(function(){
+    //         //     $("div").show();
+    //         // });
+    //         $(document).on("click","#boot", function() {
+    //             $.alert("姓名不能为空！", "警告！");
+    //         });
+    //         return false;
+    //     }
+    //     else if(document.frm.number.value==""){
+    //         $(document).on("click","#boot", function() {
+    //             $.alert("学号不能为空！", "警告！");
+    //         });
+    //         return false;
+    //     }
+    //     else if(document.frm.class.value==""){
+    //         $(document).on("click","#boot", function() {
+    //             $.alert("班级不能为空！", "警告！");
+    //         });
+    //         return false;
+    //     }
+    //     else if(document.frm.mphone.value==""){
+    //         $(document).on("click","#boot", function() {
+    //             $.alert("手机号不能为空！", "警告！");
+    //         });
+    //         return false;
+    //     }
+    //     // else if(document.frm.password.value==""){
+    //     //     $(document).on("click","#boot", function() {
+    //     //         $.alert("密码不能为空！", "警告！");
+    //     //     });
+    //     //     return false;
+    //     // }
+    //     return true;
+    // } 
+    function submitForm() {
+        var input = document.getElementById("form");
+    if (input.name.value=="") {
+        $.alert("姓名不能为空！", "警告！");
+    }
+    else if(input.number.value=="")
+    {
+        $.alert("学号不能为空！", "警告！");
+    }
+    else if(input.class.value=="")
+    {
+        $.alert("班级不能为空！", "警告！");
+    }
+    else if(input.mphone.value=="")
+    {
+        $.alert("手机号不能为空！", "警告！");
+    }
+    else
+    {
+        input.submit();
+    }
+   }
 </script>
 <script>
     $("#job").select({

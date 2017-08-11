@@ -31,6 +31,12 @@ class LoginController extends Controller
     public function register(Request $request)
     {
         $input = $request->except('_token');
+        $innumber = $input['number'];
+        $number1 = Yuser::where('number','=',$input['number'])->get();
+        if($number1[0]['number']==$innumber)
+        {
+            return view('welcome',['name'=>$input['name']]);
+        }
         $up = new Yuser();
             $up->name=$input['name'];
             // $up->password = $input['password'];

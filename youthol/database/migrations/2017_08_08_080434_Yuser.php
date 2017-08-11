@@ -17,7 +17,7 @@ class Yuser extends Migration
             $table->string('name');
             $table->string('email');
             $table->string('password');
-            $table->biginteger('number')->unique();
+            $table->biginteger('number');
             $table->biginteger('mphone');
             $table->string('bumen1');
             $table->string('bumen2');
