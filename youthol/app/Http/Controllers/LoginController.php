@@ -32,8 +32,8 @@ class LoginController extends Controller
     {
         $input = $request->except('_token');
         $innumber = $input['number'];
-        $number1 = Yuser::where('number','=',$input['number'])->get();
-        if($number1[0]['number']==$innumber)
+        $number1 = Yuser::where('number','=',$input['number'])->first();
+        if($number1['number']==$innumber)
         {
             return view('welcome',['name'=>$input['name']]);
         }

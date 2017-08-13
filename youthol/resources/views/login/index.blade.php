@@ -508,4 +508,5 @@
         },
     });
 </script>
+
 @endsection
